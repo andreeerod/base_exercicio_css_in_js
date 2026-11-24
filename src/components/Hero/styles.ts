@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, cores, fontes } from '../../styles'
 
 export const Imagem = styled.div`
   min-height: 420px;
@@ -19,8 +19,8 @@ export const Imagem = styled.div`
     background: linear-gradient(
       100deg,
       ${cores.principalEscura} 0%,
-      rgba(167, 114, 125, 0.85) 55%,
-      rgba(167, 114, 125, 0.35) 100%
+      rgba(15, 118, 110, 0.85) 55%,
+      rgba(15, 118, 110, 0.35) 100%
     );
     content: '';
   }
@@ -37,10 +37,16 @@ export const Imagem = styled.div`
 `
 
 export const Titulo = styled.h2`
-  font-family: Gloock, serif;
-  font-weight: 400;
-  font-size: 52px;
-  line-height: 1.1;
+  font-family: ${fontes.titulo};
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+
+  em {
+    font-style: normal;
+    color: ${cores.destaque};
+  }
   max-width: 640px;
 
   @media (max-width: ${breakpoints.tablet}) {

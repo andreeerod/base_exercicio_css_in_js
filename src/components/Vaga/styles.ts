@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { cores } from '../../styles'
+import { cores, fontes } from '../../styles'
 
 export const Card = styled.li`
   display: flex;
@@ -24,7 +24,7 @@ export const Nivel = styled.span`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: ${cores.principalEscura};
+  color: ${cores.principal};
   background-color: ${cores.secundaria};
   padding: 4px 10px;
   border-radius: 999px;
@@ -32,6 +32,8 @@ export const Nivel = styled.span`
 `
 
 export const Titulo = styled.h3`
+  font-family: ${fontes.titulo};
+  font-weight: 600;
   font-size: 20px;
   line-height: 1.3;
   color: ${cores.texto};

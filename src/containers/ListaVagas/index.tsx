@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import FormVagas from '../../components/FormVagas'
+import FormVagas, { Modalidade } from '../../components/FormVagas'
 
 import Vaga from '../../components/Vaga'
 
@@ -90,29 +90,59 @@ const vagas = [
 ]
 
 const ListaVagas = () => {
-  const [filtro, setFiltro] = useState<string>('')
+  const [termo, setTermo] = useState<string>('')
+  const [modalidade, setModalidade] = useState<Modalidade>('todas')
+
+  const filtro = termo.trim().toLocaleLowerCase()
 
   const vagasFiltradas = vagas.filter(
-    (x) => x.titulo.toLocaleLowerCase().search(filtro) >= 0
+    (x) =>
+      x.titulo.toLocaleLowerCase().includes(filtro) &&
+      (modalidade === 'todas' || x.modalidade === modalidade)
   )
+
+  const limpar = () => {
+    setTermo('')
+    setModalidade('todas')
+  }
 
   return (
     <div>
-      <FormVagas aoPesquisar={(termo: string) => setFiltro(termo)} />
-      <S.Vagas>
-        {vagasFiltradas.map((vag) => (
-          <Vaga
-            key={vag.id}
-            titulo={vag.titulo}
-            localizacao={vag.localizacao}
-            nivel={vag.nivel}
-            modalidade={vag.modalidade}
-            salarioMin={vag.salarioMin}
-            salarioMax={vag.salarioMax}
-            requisitos={vag.requisitos}
-          />
-        ))}
-      </S.Vagas>
+      <FormVagas
+        termo={termo}
+        aoPesquisar={setTermo}
+        modalidade={modalidade}
+        aoMudarModalidade={setModalidade}
+      />
+      <S.Resumo aria-live="polite">
+        {vagasFiltradas.length === 1
+          ? '1 vaga encontrada'
+          : `${vagasFiltradas.length} vagas encontradas`}
+      </S.Resumo>
+      {vagasFiltradas.length === 0 ? (
+        <S.Vazio>
+          <h3>Nenhuma vaga com esses filtros</h3>
+          <p>Tente outro termo ou veja todas as vagas.</p>
+          <button type="button" onClick={limpar}>
+            Limpar filtros
+          </button>
+        </S.Vazio>
+      ) : (
+        <S.Vagas>
+          {vagasFiltradas.map((vag) => (
+            <Vaga
+              key={vag.id}
+              titulo={vag.titulo}
+              localizacao={vag.localizacao}
+              nivel={vag.nivel}
+              modalidade={vag.modalidade}
+              salarioMin={vag.salarioMin}
+              salarioMax={vag.salarioMax}
+              requisitos={vag.requisitos}
+            />
+          ))}
+        </S.Vagas>
+      )}
     </div>
   )
 }

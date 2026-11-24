@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { cores } from '../../styles'
+import { cores, fontes } from '../../styles'
 
 export const Header = styled.header`
   background-color: ${cores.secundaria};
@@ -8,8 +8,8 @@ export const Header = styled.header`
   padding: 20px 0;
 
   h1 {
-    font-family: Gloock, serif;
-    font-weight: 400;
+    font-family: ${fontes.titulo};
+    font-weight: 700;
     font-size: 28px;
     color: ${cores.principalEscura};
     text-align: center;

@@ -1,14 +1,20 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
 export const cores = {
-  principal: '#a7727d',
-  principalEscura: '#7d4f59',
-  secundaria: '#f9f5e7',
-  fundo: '#fcfaf5',
-  texto: '#2e2226',
-  suave: '#7a6a6e',
-  borda: '#eadfd6',
+  principal: '#0f766e',
+  principalEscura: '#0b4f4a',
+  destaque: '#f59e0b',
+  secundaria: '#ecfdf8',
+  fundo: '#f6f8f7',
+  texto: '#0f1f1d',
+  suave: '#5b6b68',
+  borda: '#dbe5e2',
   branco: '#ffffff'
+}
+
+export const fontes = {
+  titulo: 'Sora, sans-serif',
+  texto: 'Inter, sans-serif'
 }
 
 export const breakpoints = {
@@ -21,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Lato, sans-serif;
+    font-family: ${fontes.texto};
     list-style: none;
   }
 
@@ -30,6 +36,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${cores.fundo};
     color: ${cores.texto};
     -webkit-font-smoothing: antialiased;
+  }
+
+  button, input {
+    font-family: inherit;
   }
 `
 
