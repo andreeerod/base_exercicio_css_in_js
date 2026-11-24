@@ -7,6 +7,10 @@ const Hero = () => (
       <S.Titulo>
         As melhores vagas para tecnologia, design e artes visuais.
       </S.Titulo>
+      <S.Subtitulo>
+        Encontre oportunidades remotas e presenciais em empresas que valorizam o
+        seu talento.
+      </S.Subtitulo>
     </Container>
   </S.Imagem>
 )

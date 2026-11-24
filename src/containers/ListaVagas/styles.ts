@@ -4,10 +4,13 @@ import { breakpoints } from '../../styles'
 
 export const Vagas = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 16px;
-  row-gap: 16px;
-  margin-top: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;

@@ -3,41 +3,54 @@ import styled from 'styled-components'
 import { breakpoints, cores } from '../../styles'
 
 export const Imagem = styled.div`
-  height: 360px;
+  min-height: 420px;
   width: 100%;
   background-image: url('https://cdn.pixabay.com/photo/2018/08/10/15/45/woman-3597101_1280.jpg');
   background-size: cover;
+  background-position: center;
   position: relative;
   display: flex;
   align-items: center;
+  padding: 64px 0 96px;
 
   &::before {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: ${cores.principal};
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      ${cores.principalEscura} 0%,
+      rgba(167, 114, 125, 0.85) 55%,
+      rgba(167, 114, 125, 0.35) 100%
+    );
     content: '';
-    opacity: 0.7;
   }
 
   > div {
     position: relative;
-    color: #eee;
+    color: ${cores.secundaria};
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    height: auto;
-    padding: 24px 0;
+    min-height: auto;
+    padding: 48px 0 88px;
   }
 `
 
 export const Titulo = styled.h2`
   font-family: Gloock, serif;
-  font-size: 48px;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 1.1;
+  max-width: 640px;
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 32px;
+    font-size: 34px;
   }
+`
+
+export const Subtitulo = styled.p`
+  margin-top: 16px;
+  font-size: 18px;
+  max-width: 520px;
+  opacity: 0.9;
 `

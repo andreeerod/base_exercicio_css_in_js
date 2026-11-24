@@ -2,7 +2,13 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   principal: '#a7727d',
-  secundaria: '#f9f5e7'
+  principalEscura: '#7d4f59',
+  secundaria: '#f9f5e7',
+  fundo: '#fcfaf5',
+  texto: '#2e2226',
+  suave: '#7a6a6e',
+  borda: '#eadfd6',
+  branco: '#ffffff'
 }
 
 export const breakpoints = {
@@ -21,6 +27,9 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     padding-bottom: 120px;
+    background-color: ${cores.fundo};
+    color: ${cores.texto};
+    -webkit-font-smoothing: antialiased;
   }
 `
 
@@ -30,6 +39,6 @@ export const Container = styled.div`
   margin: 0 auto;
 
   @media (max-width: ${breakpoints.desktop}) {
-    max-width: 80%;
+    max-width: 88%;
   }
 `

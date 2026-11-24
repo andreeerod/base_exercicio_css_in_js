@@ -10,18 +10,33 @@ type Props = {
   requisitos: string[]
 }
 
+const real = (valor: number) =>
+  valor.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    maximumFractionDigits: 0
+  })
+
 const Vaga = (props: Props) => (
   <S.Card>
+    <S.Nivel>{props.nivel}</S.Nivel>
     <S.Titulo>{props.titulo}</S.Titulo>
-    <ul>
-      <li>Localizacao: {props.localizacao}</li>
-      <li>Senioridade: {props.nivel}</li>
-      <li>Tipo de contratacao: {props.modalidade}</li>
+    <S.Detalhes>
       <li>
-        Salário: {props.salarioMin} - {props.salarioMax}
+        <b>Local:</b> {props.localizacao}
       </li>
-      <li>Requisitos: {props.requisitos.join(', ')}</li>
-    </ul>
+      <li>
+        <b>Contratação:</b> {props.modalidade.toUpperCase()}
+      </li>
+      <li>
+        <b>Salário:</b> {real(props.salarioMin)} a {real(props.salarioMax)}
+      </li>
+    </S.Detalhes>
+    <S.Tags>
+      {props.requisitos.map((req) => (
+        <li key={req}>{req}</li>
+      ))}
+    </S.Tags>
     <S.Link href="#">Ver detalhes e candidatar-se</S.Link>
   </S.Card>
 )
